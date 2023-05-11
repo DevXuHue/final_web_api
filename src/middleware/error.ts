@@ -7,8 +7,9 @@ const errorMiddleware = (
   res: Response,
   _next: NextFunction
 ) => {
-  err.code = err.code || 500;
+  err.code = err.code || err.status || 500;
   err.message = err.message || "Error server internal";
+  err.rawErrors = err.rawErrors || null;
 
   if (err.name === "CastError") {
     const message = "Resource not found Invalid:" + err.path;
@@ -30,7 +31,15 @@ const errorMiddleware = (
     err = new ErrorHandler(message, 400);
   }
 
-  res.status(err.code).json({
+  if (err.rawErrors) {
+    return res.status(err.code).json({
+      success: false,
+      message: err.message,
+      code: err.code,
+      rawErrors: err.rawErrors,
+    });
+  }
+  return res.status(err.code).json({
     success: false,
     message: err.message,
     code: err.code,

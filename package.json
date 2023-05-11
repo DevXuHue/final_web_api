@@ -14,6 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "cloudinary": "^1.36.4",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
@@ -30,10 +33,12 @@
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
-    "typescript": "4"
+    "typescript": "4",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.7.2",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
@@ -47,6 +52,7 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.15.11",
     "@types/nodemailer": "^6.4.7",
+    "@types/validator": "^13.7.17",
     "rotating-file-stream": "^3.1.0",
     "ts-node": "^10.9.1"
   }

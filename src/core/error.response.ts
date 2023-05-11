@@ -2,10 +2,12 @@ import { StatusCodes, ReasonPhrases } from "../enums";
 
 export class ErrorResponse extends Error {
   status: number;
+  rawErrors: string[] = [];
 
-  constructor(message: string, status: number) {
+  constructor(message: string, status: number, rawErrors?: string[]) {
     super(message);
     this.status = status;
+    if (rawErrors) this.rawErrors = rawErrors;
   }
 }
 
@@ -40,6 +42,15 @@ export class AuthFailureError extends ErrorResponse {
   constructor(
     message: string = ReasonPhrases.UNAUTHORIZED,
     statusCode = StatusCodes.UNAUTHORIZED
+  ) {
+    super(message, statusCode);
+  }
+}
+
+export class BadRequestError extends ErrorResponse {
+  constructor(
+    message: string = ReasonPhrases.BAD_REQUEST,
+    statusCode = StatusCodes.BAD_REQUEST
   ) {
     super(message, statusCode);
   }

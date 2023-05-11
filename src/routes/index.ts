@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
-import { NotFoundRequestError, SuccessResponse } from "../core";
+import { SuccessResponse } from "../core";
+import userRoutes from "./user.routes";
 
 const router = express.Router();
 
@@ -10,8 +11,6 @@ router.get("/hello", (_req: Request, res: Response): void => {
   }).send(res);
 });
 
-router.use("*", (_req: Request, _res: Response) => {
-  throw new NotFoundRequestError();
-});
+router.use("/users", userRoutes);
 
 export default router;

@@ -44,7 +44,7 @@ import "./db/mongoConnect";
 // CONFIG ROUTE
 app.use("/api/dev/v1", router);
 app.use("*", (_, __) => {
-  throw new NotFoundRequestError();
+  throw new NotFoundRequestError("Not found page", 404);
 });
 app.use(errorMiddleware);
 
