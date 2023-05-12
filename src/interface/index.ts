@@ -10,3 +10,5 @@ declare global {
     }
   }
 }
+
+export * from "./categories-post.dto";

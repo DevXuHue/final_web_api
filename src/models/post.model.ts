@@ -28,6 +28,16 @@ const postSchema = new schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: COLLECTION_MODELS.user.document,
     },
+    thumbnail: {
+      public_id: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      },
+    },
   },
   { timestamps: true, collection: COLLECTION_MODELS.post.collection }
 );

@@ -25,14 +25,12 @@ const categoryPostSchema = new Schema(
     author_name: {
       type: String,
     },
-    thumbnaol: {
+    thumbnail: {
       public_id: {
         type: String,
-        required: true,
       },
       url: {
         type: String,
-        required: true,
       },
     },
   },
