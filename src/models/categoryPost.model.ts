@@ -33,6 +33,10 @@ const categoryPostSchema = new Schema(
         type: String,
       },
     },
+    isPublish: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true, collection: COLLECTION_MODELS.user.collection }
 );

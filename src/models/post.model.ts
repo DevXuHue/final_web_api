@@ -38,6 +38,14 @@ const postSchema = new schema(
         required: true,
       },
     },
+    isPublish: {
+      type: Boolean,
+      default: true,
+    },
+    categoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: COLLECTION_MODELS.categoryPost.document,
+    },
   },
   { timestamps: true, collection: COLLECTION_MODELS.post.collection }
 );

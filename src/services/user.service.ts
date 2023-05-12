@@ -40,9 +40,7 @@ export class UserService {
     });
 
     const user = await User.create({
-      username,
-      email,
-      password,
+      ...body,
       avatar: {
         public_id: myClound.public_id,
         url: myClound.url,

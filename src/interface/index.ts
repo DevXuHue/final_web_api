@@ -12,3 +12,4 @@ declare global {
 }
 
 export * from "./categories-post.dto";
+export * from "./post.dto";

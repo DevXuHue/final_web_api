@@ -55,3 +55,12 @@ export class BadRequestError extends ErrorResponse {
     super(message, statusCode);
   }
 }
+
+export class ServerInternalError extends ErrorResponse {
+  constructor(
+    message: string = ReasonPhrases.INTERNAL_SERVER_ERROR,
+    statusCode = StatusCodes.INTERNAL_SERVER_ERROR
+  ) {
+    super(message, statusCode);
+  }
+}

@@ -19,6 +19,7 @@ export interface UserSchema extends Document {
   address?: string;
   resetPasswordToken: string;
   resetPasswordExpire: Date;
+  cmnd: string;
 }
 
 export enum Role {
@@ -63,6 +64,9 @@ const User = new Schema(
       type: String,
     },
     address: {
+      type: String,
+    },
+    cmnd: {
       type: String,
     },
     resetPasswordToken: String,

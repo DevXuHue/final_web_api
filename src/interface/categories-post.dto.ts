@@ -21,3 +21,24 @@ export class CreateCategoryPost {
   @IsNotEmpty()
   thumbnail: string;
 }
+
+export class UpdateCategoryPost {
+  @IsString()
+  title: string;
+
+  @IsString()
+  @MinLength(20)
+  description: string;
+
+  @IsString()
+  @MinLength(20)
+  shortDescription: string;
+
+  @IsString()
+  thumbnail: string;
+}
+
+export class ParamsIdCategoriesPost {
+  @IsString()
+  id: string;
+}
