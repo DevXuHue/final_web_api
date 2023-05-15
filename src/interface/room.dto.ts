@@ -30,7 +30,6 @@ export class InfoRoom {
 
 export class CreateRoomInput {
   @ValidateNested()
-  @Type(() => InfoRoom)
   info: InfoRoom;
 
   @IsString()

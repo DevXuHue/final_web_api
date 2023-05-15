@@ -37,6 +37,10 @@ const reportSchema = new Schema(
       type: Boolean,
       required: true,
     },
+    type: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: COLLECTION_MODELS.type_report.document,
+    },
   },
   { timestamps: true, collection: COLLECTION_MODELS.report.collection }
 );
