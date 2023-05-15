@@ -1,5 +1,5 @@
 {
-  "name": "hard",
+  "name": "dev/backend",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -9,7 +9,11 @@
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "ts",
+    "nodejs",
+    "mongoose"
+  ],
   "author": "hsb",
   "license": "ISC",
   "dependencies": {

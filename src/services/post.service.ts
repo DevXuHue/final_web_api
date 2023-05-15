@@ -3,7 +3,9 @@ import {
   createPost,
   findAllPost,
   findPostById,
+  getAuthorPost,
   updatePost,
+  getPostsMe,
 } from "./../repositories";
 import { findUserById } from "./../repositories/user.repository";
 import { checkValidator } from "../utils/handle-validator";
@@ -54,5 +56,14 @@ export class PostService {
     const post = await findPostById(id);
     post.isPublish = false;
     return await post.save();
+  }
+
+  public static async getPostByIdUser(id: string) {
+    const user = await findUserById(id);
+    return await getAuthorPost(user._id);
+  }
+
+  public static async getPostMe(id: string) {
+    return await getPostsMe(id);
   }
 }

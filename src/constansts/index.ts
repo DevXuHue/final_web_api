@@ -27,4 +27,8 @@ export const COLLECTION_MODELS = {
     collection: "room-type",
     document: "room-types",
   },
+  bill: {
+    collection: "bill",
+    document: "bills",
+  },
 };

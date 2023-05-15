@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import {
   ErrorResponse,
   NotFoundRequestError,
@@ -40,4 +41,17 @@ export const updatePost = async (newInput: any, id: string) => {
     throw new ServerInternalError();
   }
   return await post?.save();
+};
+
+export const getAuthorPost = async (id: string) => {
+  return await Post.find({
+    user: new mongoose.Types.ObjectId(id),
+    isPublish: true,
+  });
+};
+
+export const getPostsMe = async (id: string) => {
+  return await Post.find({
+    user: new mongoose.Types.ObjectId(id),
+  });
 };

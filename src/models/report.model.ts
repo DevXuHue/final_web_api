@@ -21,6 +21,22 @@ const reportSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: COLLECTION_MODELS.user.document,
     },
+    roomId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: COLLECTION_MODELS.room.document,
+    },
+    emailConnect: {
+      type: String,
+      required: true,
+    },
+    phoneConnect: {
+      type: String,
+      required: true,
+    },
+    isCheck: {
+      type: Boolean,
+      required: true,
+    },
   },
   { timestamps: true, collection: COLLECTION_MODELS.report.collection }
 );

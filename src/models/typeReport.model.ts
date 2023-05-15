@@ -26,6 +26,6 @@ const typeReportSchema = new Schema(
 );
 
 export const TypeReport = mongoose.model(
-  COLLECTION_MODELS.categoryPost.document,
+  COLLECTION_MODELS.type_report.document,
   typeReportSchema
 );

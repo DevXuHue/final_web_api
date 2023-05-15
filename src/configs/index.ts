@@ -37,3 +37,27 @@ export const configCloundinary: () => void = () => {
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
 };
+
+export const optionsSwaggerExpress = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "BinhHo Express API with Swagger",
+      version: "0.1.0",
+      description:
+        "This is a simple CRUD API application made with Express and documented with Swagger",
+      contact: {
+        name: "HoBinh",
+        url: "https://github/hosybinhkog",
+        email: "hosybinhkog@email.com",
+      },
+    },
+    servers: [
+      {
+        url: "http://localhost:4444/api/dev/v1",
+      },
+    ],
+  },
+  apis: ["../routes/*.js", "./routes/*.js", "../routes/*.ts"],
+  title: "Music API Documentation",
+};

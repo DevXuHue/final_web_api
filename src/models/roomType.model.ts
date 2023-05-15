@@ -26,6 +26,10 @@ const roomTypeSchema = new Schema(
         required: true,
       },
     },
+    authorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: COLLECTION_MODELS.user.document,
+    },
   },
   { timestamps: true, collection: COLLECTION_MODELS.room_type.collection }
 );

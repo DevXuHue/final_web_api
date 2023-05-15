@@ -5,3 +5,4 @@ export * from "./typeReport.model";
 export * from "./report.model";
 export * from "./roomType.model";
 export * from "./room.model";
+export * from "./bill.model";

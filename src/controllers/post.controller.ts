@@ -72,6 +72,28 @@ class PostController {
       }).send(res);
     }
   );
+
+  getPostsAuthorParam = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const { id } = <ParamsPost>(<unknown>req.params);
+      const data = await PostService.getPostByIdUser(id);
+      new SuccessResponse({
+        message: "get posts by author",
+        metadata: data,
+      }).send(res);
+    }
+  );
+
+  getPostsMe = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const userId = req.user.id;
+      const data = await PostService.getPostMe(userId);
+      new SuccessResponse({
+        message: "get post me successfully",
+        metadata: data,
+      }).send(res);
+    }
+  );
 }
 
 export const postController = new PostController();

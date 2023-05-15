@@ -13,3 +13,7 @@ declare global {
 
 export * from "./categories-post.dto";
 export * from "./post.dto";
+export * from "./type-report.dto";
+export * from "./report.dto";
+export * from "./room-type.dto";
+export * from "./room.dto";
