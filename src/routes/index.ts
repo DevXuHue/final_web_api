@@ -5,6 +5,7 @@ import routerCategoryPost from "./category-post.routes";
 import postRouter from "./post.routes";
 import reportTypeRouter from "./report-type.routes";
 import reportRouter from "./report.routes";
+import roomTypeRouter from "./room-type.routes";
 
 const router = express.Router();
 
@@ -46,5 +47,6 @@ router.use("/categories-post", routerCategoryPost);
 router.use("/post", postRouter);
 router.use("/report-type", reportTypeRouter);
 router.use("/report", reportRouter);
+router.use("/room-types", roomTypeRouter);
 
 export default router;

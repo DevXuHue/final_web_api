@@ -15,13 +15,13 @@ class UserController {
   register = catchAsyncError(
     async (req: Request, res: Response, _next: NextFunction) => {
       const createInput = <RegisterUserInput>req.body;
-      const data = await UserService.register(createInput, res);
+      const data = await UserService.register(createInput);
       new SuccessResponse({
         message: "create success",
         statusCode: StatusCodes.CREATED,
         metadata: data,
         reasonStatusCode: ReasonPhrases.CREATED,
-      });
+      }).send(res);
     }
   );
 
@@ -76,6 +76,28 @@ class UserController {
         reasonStatusCode: ReasonPhrases.OK,
         metadata: data,
       });
+    }
+  );
+
+  me = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const data = await UserService.me(req.user.id);
+      new SuccessResponse({
+        message: "get me success",
+        metadata: data,
+      }).send(res);
+    }
+  );
+
+  getAllCustomer = catchAsyncError(
+    async (_req: Request, res: Response, _next: NextFunction) => {
+      const customer = await UserService.getCustommer();
+      new SuccessResponse({
+        message: "get all customer successfully",
+        metadata: {
+          customer,
+        },
+      }).send(res);
     }
   );
 }

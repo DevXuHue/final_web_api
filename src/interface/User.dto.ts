@@ -1,10 +1,4 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  MinLength,
-  IsBase64,
-} from "class-validator";
+import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
 
 export class Clound {
   @IsString()
@@ -49,7 +43,8 @@ export class RegisterUserInput {
   @IsNotEmpty()
   username: string;
 
-  @IsBase64()
+  @IsString()
+  @IsNotEmpty()
   avatar: string;
 }
 

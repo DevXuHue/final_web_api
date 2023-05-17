@@ -28,3 +28,7 @@ export const updateReportType = async (newInput: any | unknown, id: string) => {
 
   return await updateReportType?.save();
 };
+
+export const findReportTypeLean = async () => {
+  return await TypeReport.find({}).lean();
+};

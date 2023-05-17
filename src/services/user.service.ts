@@ -17,9 +17,10 @@ import {
   NotFoundRequestError,
 } from "./../core/error.response";
 import { sendEmail } from "./../utils/sendEmailChangeOrForgotPassword";
+import { findUserById, findAllCustomer } from "../repositories";
 
 export class UserService {
-  static register = async (body: RegisterUserInput, res: Response) => {
+  static register = async (body: RegisterUserInput) => {
     await checkValidator(RegisterUserInput, body);
     const { email, password, username, avatar } = body;
 
@@ -30,12 +31,11 @@ export class UserService {
         email,
       });
 
-      return sendToken(newUser, 200, res);
+      return newUser;
     }
 
     const myClound = await cloundinary.v2.uploader.upload(avatar, {
       folder: "avatar",
-      type: "facebook",
       format: "jpg",
     });
 
@@ -47,7 +47,7 @@ export class UserService {
       },
     });
 
-    return sendToken(user, 200, res);
+    return user;
   };
 
   static async login(body: LoginUserInput, res: Response) {
@@ -148,5 +148,13 @@ export class UserService {
     await user.save();
 
     sendToken(user, StatusCodes.OK, res);
+  };
+
+  static me = async (id: string) => {
+    return await findUserById(id);
+  };
+
+  static getCustommer = async () => {
+    return await findAllCustomer();
   };
 }

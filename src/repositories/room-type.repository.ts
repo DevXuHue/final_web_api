@@ -22,3 +22,7 @@ export const findRoomTypeByIdAndUpdate = async (input: any, id: string) => {
   if (updateRoomType) return updateRoomType;
   throw new ServerInternalError("Error to update room type");
 };
+
+export const findRoomTypesLean = async () => {
+  return await RoomType.find({}).lean();
+};

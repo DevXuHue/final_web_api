@@ -12,7 +12,7 @@ class CategoriesPostController {
   create = catchAsyncError(
     async (req: Request, res: Response, _next: NextFunction) => {
       const input = <CreateCategoryPost>req.body;
-      const userId = req.body.user.id;
+      const userId = req.user.id;
       const data = await CategoriesPostService.create(input, userId);
       new SuccessResponse({
         message: "create categories post successfully",

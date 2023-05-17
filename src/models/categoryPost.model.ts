@@ -38,7 +38,7 @@ const categoryPostSchema = new Schema(
       default: false,
     },
   },
-  { timestamps: true, collection: COLLECTION_MODELS.user.collection }
+  { timestamps: true, collection: COLLECTION_MODELS.categoryPost.collection }
 );
 
 export const CategoryPost = mongoose.model(

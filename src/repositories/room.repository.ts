@@ -27,3 +27,7 @@ export const findRoomIdAndUpdate = async (input: any, id: string) => {
 export const findRoomByType = async (id: string) => {
   return await Room.find({ type: new mongoose.Types.ObjectId(id) });
 };
+
+export const findRoomLean = async () => {
+  return await Room.find({}).lean();
+};

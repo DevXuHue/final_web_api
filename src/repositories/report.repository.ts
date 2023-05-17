@@ -29,3 +29,7 @@ export const findReportByIdAndUpdate = async (body: any, id: string) => {
 export const findReportMe = async (id: string) => {
   return await Report.find({ userId: id });
 };
+
+export const findReportClean = async () => {
+  return await Report.find({}).lean();
+};

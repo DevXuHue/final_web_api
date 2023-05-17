@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, MinLength } from "class-validator";
+import { IsNotEmpty, IsString, MinLength } from "class-validator";
 
 export class CreateReportType {
   @IsString()
@@ -11,7 +11,7 @@ export class CreateReportType {
   description: string;
 
   @IsNotEmpty()
-  @IsNumber()
+  @IsString()
   level: number;
 }
 
@@ -23,7 +23,7 @@ export class UpdateReportType {
   @MinLength(20)
   description: string;
 
-  @IsNumber()
+  @IsString()
   level: number;
 }
 

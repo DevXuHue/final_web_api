@@ -16,7 +16,7 @@ export class ReportService {
   public static getById = async (id: string, idUser: string) => {
     const user = await findUserById(idUser);
     const report = await findReportById(id);
-    if (Array.isArray(user.role) && user.role.includes("admin")) return report;
+    if (user.role.toString().includes("admin")) return report;
     if (report.userId !== user.id)
       throw new ForbiddenRequestError("permisson denined");
     return report;

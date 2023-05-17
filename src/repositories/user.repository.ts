@@ -7,3 +7,11 @@ export const findUserById = async (id: string) => {
   if (user) return user;
   throw new NotFoundRequestError("user not found");
 };
+
+export const findAllCustomer = async () => {
+  return await User.find({});
+};
+
+export const findAllCustomerLean = async () => {
+  return await User.find({}).lean();
+};
