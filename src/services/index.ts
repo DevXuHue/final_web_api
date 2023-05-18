@@ -4,3 +4,4 @@ export * from "./report-type.service";
 export * from "./report.service";
 export * from "./room-type.service";
 export * from "./room.service";
+export * from "./common.service";

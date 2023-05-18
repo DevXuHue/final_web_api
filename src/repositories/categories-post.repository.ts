@@ -21,3 +21,7 @@ export const findCategoryPostAndUpdate = async (data: any, id: string) => {
     );
   return await categoriesPost.save();
 };
+
+export const findCategoriesLean = async () => {
+  return await CategoryPost.find({}).lean();
+};

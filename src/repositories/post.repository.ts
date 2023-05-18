@@ -20,6 +20,10 @@ export const findAllPost = async () => {
   return await Post.find({ isPublish: true }).lean();
 };
 
+export const findPostLean = async () => {
+  return await Post.find({ isPublish: true }).lean();
+};
+
 export const findPostPushlish = async (id: string) => {
   const post = await Post.findById(id);
   if (!post || !post.isPublish) {

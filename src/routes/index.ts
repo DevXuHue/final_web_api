@@ -6,35 +6,9 @@ import postRouter from "./post.routes";
 import reportTypeRouter from "./report-type.routes";
 import reportRouter from "./report.routes";
 import roomTypeRouter from "./room-type.routes";
+import commonRouter from "./common.routes";
 
 const router = express.Router();
-
-/**
- * @swagger
- * tags:
- *   name: Books
- *   description: The books managing API
- * /books:
- *   post:
- *     summary: Create a new book
- *     tags: [Books]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Book'
- *     responses:
- *       200:
- *         description: The created book.
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Book'
- *       500:
- *         description: Some server error
- *
- */
 router.get("/hello", (_req: Request, res: Response): void => {
   new SuccessResponse({
     message: "hello sỹ bình",
@@ -48,5 +22,6 @@ router.use("/post", postRouter);
 router.use("/report-type", reportTypeRouter);
 router.use("/report", reportRouter);
 router.use("/room-types", roomTypeRouter);
+router.use("/admin", commonRouter);
 
 export default router;
