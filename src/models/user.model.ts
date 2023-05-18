@@ -69,6 +69,16 @@ const User = new Schema(
     cmnd: {
       type: String,
     },
+    rooms: [
+      {
+        roomId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: COLLECTION_MODELS.room.document,
+        },
+        form: Date,
+        to: Date,
+      },
+    ],
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },

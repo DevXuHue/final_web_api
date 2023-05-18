@@ -5,3 +5,4 @@ export * from "./report-type.repository";
 export * from "./report.repository";
 export * from "./room-type.repository";
 export * from "./room.repository";
+export * from "./bill.repository";

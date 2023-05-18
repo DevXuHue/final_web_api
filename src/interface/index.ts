@@ -17,3 +17,4 @@ export * from "./type-report.dto";
 export * from "./report.dto";
 export * from "./room-type.dto";
 export * from "./room.dto";
+export * from "./bill.dto";
