@@ -1,12 +1,13 @@
 import express, { Request, Response } from "express";
 import { SuccessResponse } from "../core";
-import userRoutes from "./user.routes";
 import routerCategoryPost from "./category-post.routes";
+import commonRouter from "./common.routes";
 import postRouter from "./post.routes";
 import reportTypeRouter from "./report-type.routes";
 import reportRouter from "./report.routes";
 import roomTypeRouter from "./room-type.routes";
-import commonRouter from "./common.routes";
+import userRoutes from "./user.routes";
+import roomRouter from "./room.routes";
 
 const router = express.Router();
 router.get("/hello", (_req: Request, res: Response): void => {
@@ -23,5 +24,6 @@ router.use("/report-type", reportTypeRouter);
 router.use("/report", reportRouter);
 router.use("/room-types", roomTypeRouter);
 router.use("/admin", commonRouter);
+router.use("/room", roomRouter);
 
 export default router;

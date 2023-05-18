@@ -1,16 +1,13 @@
-
 import {
   IsBoolean,
   IsNotEmpty,
-  IsNumber,
   IsPhoneNumber,
   IsString,
   MaxLength,
   MinLength,
-  ValidateNested,
 } from "class-validator";
 
-export class InfoRoom {
+export class CreateRoomInput {
   @IsString()
   @IsPhoneNumber("VI")
   @IsNotEmpty()
@@ -26,11 +23,6 @@ export class InfoRoom {
 
   @IsBoolean()
   utilities: boolean;
-}
-
-export class CreateRoomInput {
-  @ValidateNested()
-  info: InfoRoom;
 
   @IsString()
   @IsNotEmpty()
@@ -51,11 +43,69 @@ export class CreateRoomInput {
   @MaxLength(50)
   short_description: string;
 
-  @IsNumber()
-  @IsNotEmpty()
-  price: number;
-
   @IsString()
   @IsNotEmpty()
   type: string;
+
+  @IsString()
+  to: string;
+
+  @IsString()
+  form: string;
+
+  @IsString()
+  user_booking: string;
+
+  @IsString()
+  images: string;
+}
+
+export class UpdateRoomInput {
+  @IsString()
+  @IsPhoneNumber("VI")
+  phoneConnect: string;
+
+  @IsString()
+  address: string;
+
+  @IsString()
+  acreage: string;
+
+  @IsBoolean()
+  utilities: boolean;
+
+  @IsString()
+  title: string;
+
+  @IsString()
+  @MinLength(30)
+  description: string;
+
+  @IsString()
+  @MinLength(50)
+  body: string;
+
+  @IsString()
+  @MaxLength(50)
+  short_description: string;
+
+  @IsString()
+  type: string;
+
+  @IsString()
+  to: string;
+
+  @IsString()
+  form: string;
+
+  @IsString()
+  user_booking: string;
+
+  @IsString()
+  images: string;
+}
+
+export class ParamsRoom {
+  @IsString()
+  id: string;
 }

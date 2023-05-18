@@ -25,10 +25,6 @@ const roomSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: COLLECTION_MODELS.user.document,
     },
-    price: {
-      type: Number,
-      default: 100,
-    },
     isBooked: {
       type: Boolean,
       default: false,
@@ -63,6 +59,14 @@ const roomSchema = new Schema(
       utilities: {
         type: Boolean,
         required: true,
+      },
+    },
+    image: {
+      public_id: {
+        type: String,
+      },
+      url: {
+        type: String,
       },
     },
   },
