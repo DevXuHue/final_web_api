@@ -23,7 +23,7 @@ export class RoomService {
   }
 
   static async newRoom(input: CreateRoomInput) {
-    await checkValidator(CreateRoomInput, input);
+    console.log(input);
     const {
       acreage,
       address,

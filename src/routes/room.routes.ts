@@ -6,6 +6,12 @@ const roomRouter = express.Router();
 roomRouter.get("/", roomController.getAll);
 roomRouter.get("/type/:id", roomController.getRoomByType);
 roomRouter.get("/:id", roomController.getRoom);
+roomRouter.post(
+  "/",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  roomController.createRoom
+);
 roomRouter.put(
   "/:id",
   isAuthenticated,

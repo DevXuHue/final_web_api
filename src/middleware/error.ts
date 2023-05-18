@@ -7,6 +7,7 @@ const errorMiddleware = (
   res: Response,
   _next: NextFunction
 ) => {
+  console.log(err);
   err.code = err.code || err.status || 500;
   err.message = err.message || "Error server internal";
   err.rawErrors = err.rawErrors || null;
