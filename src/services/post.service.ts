@@ -60,7 +60,7 @@ export class PostService {
 
   public static async getPostByIdUser(id: string) {
     const user = await findUserById(id);
-    return await getAuthorPost(user._id);
+    return await getAuthorPost(user.id);
   }
 
   public static async getPostMe(id: string) {

@@ -13,6 +13,9 @@ export const findRoomById = async (id: string) => {
 };
 
 export const createRoom = async (input: any) => {
+  if (input.user_booking) {
+    input.isBooking = true;
+  }
   const room = await Room.create(input);
   if (room) return room;
   throw new ServerInternalError("Error to create room");

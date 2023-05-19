@@ -1,5 +1,4 @@
 import { v2 } from "cloudinary";
-import { checkValidator } from "../utils/handle-validator";
 import { CreateRoomInput, UpdateRoomInput } from "../interface";
 import {
   createRoom,
@@ -23,13 +22,12 @@ export class RoomService {
   }
 
   static async newRoom(input: CreateRoomInput) {
-    console.log(input);
     const {
       acreage,
       address,
       body,
       description,
-      form,
+      from,
       phoneConnect,
       short_description,
       title,
@@ -56,7 +54,7 @@ export class RoomService {
       short_description,
       title,
       to,
-      form,
+      from,
       type,
       user_booking,
       image: {
@@ -69,7 +67,6 @@ export class RoomService {
   }
 
   static async updateRoom(input: UpdateRoomInput, id: string) {
-    await checkValidator(UpdateRoomInput, input);
     const {
       acreage,
       address,
@@ -85,6 +82,8 @@ export class RoomService {
       user_booking,
       images,
     } = input;
+    console.log("id", id);
+
     if (images) {
       const room = await findRoomById(id);
       await v2.uploader.destroy(room.image?.public_id as string);
@@ -104,9 +103,6 @@ export class RoomService {
         short_description,
         title,
         to,
-        form,
-        type,
-        user_booking,
         image: {
           public_id: resImage.public_id,
           url: resImage.url,

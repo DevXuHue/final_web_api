@@ -9,7 +9,9 @@ import {
   LoginUserInput,
   RegisterUserInput,
   ResetPasswordInput,
+  UpdateUserInput,
 } from "./../interface/User.dto";
+import { ParamsBill } from "../interface";
 
 class UserController {
   register = catchAsyncError(
@@ -97,6 +99,29 @@ class UserController {
         metadata: {
           customer,
         },
+      }).send(res);
+    }
+  );
+
+  getOne = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const { id } = <ParamsBill>(<unknown>req.params);
+      new SuccessResponse({
+        message: "get one users",
+        metadata: await UserService.getOne(id),
+      }).send(res);
+    }
+  );
+
+  updateUser = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const { id } = <ParamsBill>(<unknown>req.params);
+      const body = <UpdateUserInput>req.body;
+      console.log(id);
+      const data = await UserService.updateUser(body, id);
+      new SuccessResponse({
+        message: "update user success",
+        metadata: data,
       }).send(res);
     }
   );

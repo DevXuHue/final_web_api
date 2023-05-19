@@ -8,11 +8,12 @@ import reportRouter from "./report.routes";
 import roomTypeRouter from "./room-type.routes";
 import userRoutes from "./user.routes";
 import roomRouter from "./room.routes";
+import utilsRoter from "./utils.routes";
 
 const router = express.Router();
 router.get("/hello", (_req: Request, res: Response): void => {
   new SuccessResponse({
-    message: "hello sỹ bình",
+    message: "hello trường",
     metadata: null,
   }).send(res);
 });
@@ -25,5 +26,6 @@ router.use("/report", reportRouter);
 router.use("/room-types", roomTypeRouter);
 router.use("/admin", commonRouter);
 router.use("/room", roomRouter);
+router.use("/util", utilsRoter);
 
 export default router;

@@ -1,26 +1,12 @@
-import { COLLECTION_MODELS } from "./../constansts/index";
-require("dotenv").config();
-import mongoose, { Document } from "mongoose";
-import validator from "validator";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
-import { CloundImage } from "src/interface";
+import mongoose from "mongoose";
+import validator from "validator";
+import { COLLECTION_MODELS } from "./../constansts/index";
+require("dotenv").config();
 
 const Schema = mongoose.Schema;
-
-export interface UserSchema extends Document {
-  username: string;
-  email: string;
-  password: string;
-  avatar?: CloundImage;
-  role: Role;
-  phone?: string;
-  address?: string;
-  resetPasswordToken: string;
-  resetPasswordExpire: Date;
-  cmnd: string;
-}
 
 export enum Role {
   "user",
@@ -69,16 +55,14 @@ const User = new Schema(
     cmnd: {
       type: String,
     },
-    rooms: [
-      {
-        roomId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: COLLECTION_MODELS.room.document,
-        },
-        form: Date,
-        to: Date,
+    rooms: {
+      roomId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: COLLECTION_MODELS.room.document,
       },
-    ],
+      from: Date,
+      to: Date,
+    },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },
@@ -114,7 +98,4 @@ User.methods.getResetPasswordToken = async function () {
   return resetToken;
 };
 
-export default mongoose.model<UserSchema>(
-  COLLECTION_MODELS.user.document,
-  User
-);
+export default mongoose.model(COLLECTION_MODELS.user.document, User);

@@ -1,6 +1,5 @@
 import { Response } from "express";
 import { StatusCodes, ReasonPhrases } from "../enums";
-import { UserSchema } from "../models/user.model";
 
 interface ContructorData {
   message?: string;
@@ -33,11 +32,7 @@ export class SuccessResponse {
     return res.status(this.status).json(this);
   }
 
-  async sendToken(
-    _user: UserSchema,
-    _statusCode: StatusCodes.OK,
-    _token: string
-  ) {}
+  async sendToken(_user: any, _statusCode: StatusCodes.OK, _token: string) {}
 }
 export class Oke extends SuccessResponse {
   constructor({ message, metadata, options }: ContructorData) {

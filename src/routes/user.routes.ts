@@ -22,4 +22,18 @@ userRoutes.get(
   userController.getAllCustomer
 );
 
+userRoutes.get(
+  "/admin/customers/:id",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  userController.getOne
+);
+
+userRoutes.put(
+  "/admin/customers/:id",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  userController.updateUser
+);
+
 export default userRoutes;

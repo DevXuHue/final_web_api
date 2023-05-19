@@ -31,4 +31,8 @@ export const COLLECTION_MODELS = {
     collection: "bill",
     document: "bills",
   },
+  utils: {
+    collection: "util",
+    document: "utils",
+  },
 };

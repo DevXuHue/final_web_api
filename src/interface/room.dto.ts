@@ -51,7 +51,7 @@ export class CreateRoomInput {
   to: string;
 
   @IsString()
-  form: string;
+  from: string;
 
   @IsString()
   user_booking: string;
@@ -62,7 +62,6 @@ export class CreateRoomInput {
 
 export class UpdateRoomInput {
   @IsString()
-  @IsPhoneNumber("VI")
   phoneConnect: string;
 
   @IsString()
@@ -71,8 +70,8 @@ export class UpdateRoomInput {
   @IsString()
   acreage: string;
 
-  @IsBoolean()
-  utilities: boolean;
+  @IsString()
+  utilities: string;
 
   @IsString()
   title: string;
@@ -86,7 +85,6 @@ export class UpdateRoomInput {
   body: string;
 
   @IsString()
-  @MaxLength(50)
   short_description: string;
 
   @IsString()

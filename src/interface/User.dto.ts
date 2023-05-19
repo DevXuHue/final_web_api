@@ -66,3 +66,35 @@ export class ResetPasswordInput {
   @MinLength(8)
   passwordConfirm: string;
 }
+
+export class UpdateUserInput {
+  @IsString({
+    message: "Vui lòng nhập đúng dữ liệu!",
+  })
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  username: string;
+
+  @IsString()
+  avatar: string;
+
+  @IsString()
+  phone: string;
+
+  @IsString()
+  address: string;
+
+  @IsString()
+  cmnd: string;
+
+  @IsString()
+  to: string;
+
+  @IsString()
+  from: string;
+
+  @IsString()
+  room: string;
+}

@@ -1,14 +1,22 @@
-import crypto from "crypto";
 import cloundinary from "cloudinary";
+import crypto from "crypto";
 import { Response } from "express";
 import { ReasonPhrases, StatusCodes } from "../enums";
 import {
-  RegisterUserInput,
-  ResetPasswordInput,
   ForgotPassworInput,
   LoginUserInput,
+  RegisterUserInput,
+  ResetPasswordInput,
+  UpdateUserInput,
 } from "../interface/User.dto";
 import { User } from "../models";
+import {
+  findAllCustomer,
+  findRoomById,
+  findRoomIdAndUpdate,
+  findUserById,
+  findUserByIdAndUpdate,
+} from "../repositories";
 import { checkValidator } from "../utils/handle-validator";
 import sendToken from "../utils/jwtToken";
 import {
@@ -17,7 +25,7 @@ import {
   NotFoundRequestError,
 } from "./../core/error.response";
 import { sendEmail } from "./../utils/sendEmailChangeOrForgotPassword";
-import { findUserById, findAllCustomer } from "../repositories";
+import mongoose from "mongoose";
 
 export class UserService {
   static register = async (body: RegisterUserInput) => {
@@ -156,5 +164,75 @@ export class UserService {
 
   static getCustommer = async () => {
     return await findAllCustomer();
+  };
+
+  static getOne = async (id: string) => {
+    return await findUserById(id);
+  };
+
+  static updateUser = async (body: UpdateUserInput, id: string) => {
+    await checkValidator(UpdateUserInput, body);
+    const { address, avatar, cmnd, email, from, phone, room, to, username } =
+      body;
+    let rooms = null;
+    if (room) {
+      rooms = {
+        roomId: new mongoose.Types.ObjectId(room),
+        to,
+        from,
+      };
+
+      await findRoomIdAndUpdate(
+        {
+          to,
+          from,
+          user_booking: id,
+          isBooked: true,
+        },
+        room
+      );
+
+      const user = await findUserById(id);
+      // @ts-ignore
+      if (user?.rooms?.roomId) {
+        const roomUpdate = await findRoomById(user?.rooms?.roomId.toString());
+        roomUpdate.isBooked = false;
+        await roomUpdate.save();
+      }
+    }
+    if (avatar) {
+      const myClound = await cloundinary.v2.uploader.upload(avatar, {
+        folder: "avatar",
+        format: "jpg",
+      });
+
+      return findUserByIdAndUpdate(
+        {
+          username,
+          cmnd,
+          email,
+          address,
+          phone,
+          rooms,
+          avatar: {
+            public_id: myClound.public_id,
+            url: myClound.url,
+          },
+        },
+        id
+      );
+    }
+
+    return await findUserByIdAndUpdate(
+      {
+        username,
+        cmnd,
+        email,
+        address,
+        phone,
+        rooms,
+      },
+      id
+    );
   };
 }

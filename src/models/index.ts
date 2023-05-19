@@ -6,3 +6,4 @@ export * from "./report.model";
 export * from "./roomType.model";
 export * from "./room.model";
 export * from "./bill.model";
+export * from "./util.model";

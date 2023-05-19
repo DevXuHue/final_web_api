@@ -15,3 +15,7 @@ export const findAllCustomer = async () => {
 export const findAllCustomerLean = async () => {
   return await User.find({}).lean();
 };
+
+export const findUserByIdAndUpdate = async (data: any, id: string) => {
+  return await User.findByIdAndUpdate(id, data);
+};
