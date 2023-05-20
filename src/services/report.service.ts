@@ -26,6 +26,7 @@ export class ReportService {
     return await createReport({
       ...body,
       userId,
+      isCheck: false,
     });
   };
 

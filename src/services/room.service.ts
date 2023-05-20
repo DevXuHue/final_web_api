@@ -7,6 +7,8 @@ import {
   findRoomByType,
   findRoomIdAndUpdate,
 } from "../repositories";
+import { Room } from "../models";
+import mongoose from "mongoose";
 
 export class RoomService {
   static async getAll() {
@@ -129,4 +131,11 @@ export class RoomService {
 
     return await findRoomIdAndUpdate(bodyInput, id);
   }
+
+  static getRoomByUserId = async (id: string) => {
+    console.log(id);
+    return await Room.find({
+      user_booking: new mongoose.Types.ObjectId(id),
+    }).lean();
+  };
 }

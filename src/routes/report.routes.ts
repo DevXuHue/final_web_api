@@ -10,6 +10,13 @@ reportRouter.get(
   reportController.getAll
 );
 reportRouter.get("/me", isAuthenticated, reportController.getMe);
+reportRouter.post(
+  "/check",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  reportController.check
+);
 reportRouter.get("/:id", isAuthenticated, reportController.getById);
+reportRouter.post("/", isAuthenticated, reportController.create);
 
 export default reportRouter;

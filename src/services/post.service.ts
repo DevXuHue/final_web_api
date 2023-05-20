@@ -10,6 +10,7 @@ import {
 import { findUserById } from "./../repositories/user.repository";
 import { checkValidator } from "../utils/handle-validator";
 import { CreatePostInput, UpdatePostInput } from "./../interface/post.dto";
+import { Post } from "../models";
 
 export class PostService {
   static async create(body: CreatePostInput, idUser: string) {
@@ -65,5 +66,9 @@ export class PostService {
 
   public static async getPostMe(id: string) {
     return await getPostsMe(id);
+  }
+
+  public static async getPostByCategoryId(id: string) {
+    return await Post.find({ categoryId: id });
   }
 }

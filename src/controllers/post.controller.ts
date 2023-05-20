@@ -94,6 +94,15 @@ class PostController {
       }).send(res);
     }
   );
+
+  getPostByCategoriesId = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      new SuccessResponse({
+        message: "get posts by categories id",
+        metadata: await PostService.getPostByCategoryId(req.params.id),
+      }).send(res);
+    }
+  );
 }
 
 export const postController = new PostController();

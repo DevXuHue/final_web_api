@@ -59,6 +59,15 @@ class RoomController {
       }).send(res);
     }
   );
+
+  getRoomUser = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      new SuccessResponse({
+        message: "get room by userid successfully",
+        metadata: await RoomService.getRoomByUserId(req.user.id),
+      }).send(res);
+    }
+  );
 }
 
 export const roomController = new RoomController();

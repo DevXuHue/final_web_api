@@ -3,6 +3,8 @@ import { ReportService } from "./../services";
 import { NextFunction, Request, Response } from "express";
 import catchAsyncError from "../middleware/catchAsyncError";
 import { ReportParams } from "../interface";
+import { Report } from "../models";
+import { NotFoundRequestError } from "../core";
 
 class ReportController {
   getAll = catchAsyncError(
@@ -32,6 +34,29 @@ class ReportController {
       const data = await ReportService.getReportByMe(id);
       new SuccessResponse({
         message: "get reports by me",
+        metadata: data,
+      }).send(res);
+    }
+  );
+
+  create = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const data = await ReportService.craeteReport(req.body, req.user.id);
+      new SuccessResponse({
+        message: "create reports by me",
+        metadata: data,
+      }).send(res);
+    }
+  );
+
+  check = catchAsyncError(
+    async (req: Request, res: Response, _next: NextFunction) => {
+      const data = await Report.findById(req.body.id);
+      if (!data) throw new NotFoundRequestError("not found report");
+      data.isCheck = true;
+      await data.save();
+      new SuccessResponse({
+        message: "check success",
         metadata: data,
       }).send(res);
     }

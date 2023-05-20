@@ -1,10 +1,4 @@
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsNumber,
-  IsPhoneNumber,
-  IsString,
-} from "class-validator";
+import { IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class CreateReport {
   @IsString()
@@ -26,7 +20,6 @@ export class CreateReport {
 
   @IsString()
   @IsNotEmpty()
-  @IsPhoneNumber("VI")
   phoneConnect: string;
 
   @IsString()

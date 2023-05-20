@@ -5,6 +5,7 @@ import {
   ServerInternalError,
 } from "../core";
 import { CategoriesUtil, Utils } from "../models";
+import mongoose from "mongoose";
 
 export class CategoriesUtilServive {
   static async findAll() {
@@ -19,7 +20,7 @@ export class CategoriesUtilServive {
 
   static async getUtilsByCategories(id: string) {
     return await Utils.find({
-      categoriesId: id,
+      categoriesId: new mongoose.Types.ObjectId(id),
     });
   }
 
