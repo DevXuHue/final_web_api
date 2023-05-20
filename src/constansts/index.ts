@@ -35,4 +35,8 @@ export const COLLECTION_MODELS = {
     collection: "util",
     document: "utils",
   },
+  categories_utils: {
+    document: "categories_utils",
+    collection: "categories_util",
+  },
 };

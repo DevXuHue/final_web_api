@@ -30,6 +30,10 @@ const utilsChema = new Scheme(
       type: mongoose.Types.ObjectId,
       ref: COLLECTION_MODELS.user.document,
     },
+    categoriesId: {
+      type: mongoose.Types.ObjectId,
+      ref: COLLECTION_MODELS.categories_utils.document,
+    },
   },
   {
     timestamps: true,

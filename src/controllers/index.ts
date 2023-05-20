@@ -5,3 +5,5 @@ export * from "./room-type.controller";
 export * from "./type-report.controller";
 export * from "./report.controller";
 export * from "./common.controller";
+export * from "./categories-utils.controller";
+export * from "./categories-utils.controller";

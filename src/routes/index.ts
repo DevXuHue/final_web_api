@@ -9,6 +9,7 @@ import roomTypeRouter from "./room-type.routes";
 import userRoutes from "./user.routes";
 import roomRouter from "./room.routes";
 import utilsRoter from "./utils.routes";
+import categoriesUtilsRouter from "./categories-util.routes";
 
 const router = express.Router();
 router.get("/hello", (_req: Request, res: Response): void => {
@@ -27,5 +28,6 @@ router.use("/room-types", roomTypeRouter);
 router.use("/admin", commonRouter);
 router.use("/room", roomRouter);
 router.use("/util", utilsRoter);
+router.use("/cateegories-utils", categoriesUtilsRouter);
 
 export default router;
