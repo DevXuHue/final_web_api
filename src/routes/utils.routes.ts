@@ -11,7 +11,7 @@ utilsRoter.post(
   authorizeRoles("admin"),
   utilsController.create
 );
-utilsRoter.post(
+utilsRoter.put(
   "/:id",
   isAuthenticated,
   authorizeRoles("admin"),

@@ -67,6 +67,7 @@ class UserController {
   resetPassword = catchAsyncError(
     async (req: Request, res: Response, _next: NextFunction) => {
       const resetPasswordInput = <ResetPasswordInput>req.body;
+      console.log(resetPasswordInput);
       const data = await UserService.resetPassowrd(
         resetPasswordInput,
         res,

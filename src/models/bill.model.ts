@@ -20,14 +20,6 @@ const billSchema = new Schema(
       type: Number,
       required: true,
     },
-    from: {
-      type: Date,
-      required: true,
-    },
-    to: {
-      type: Date,
-      required: true,
-    },
     authorId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: COLLECTION_MODELS.user.document,
@@ -36,10 +28,22 @@ const billSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: COLLECTION_MODELS.room.document,
     },
-    total_days: {
-      type: Number,
-      required: true,
-    },
+    utils: [
+      {
+        utilId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: COLLECTION_MODELS.utils.document,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
   },
   { collection: COLLECTION_MODELS.bill.collection, timestamps: true }
 );

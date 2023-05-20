@@ -4,7 +4,7 @@ const Scheme = mongoose.Schema;
 
 const utilsChema = new Scheme(
   {
-    tiltle: {
+    title: {
       type: String,
       required: true,
     },

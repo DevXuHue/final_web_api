@@ -17,7 +17,7 @@ export class UtilsService {
       format: "png",
     });
 
-    body.image = {
+    body.images = {
       public_id: imageRes.public_id,
       url: imageRes.url,
     };
@@ -36,7 +36,7 @@ export class UtilsService {
         folder: "utils",
         format: "png",
       });
-      body.image = {
+      body.images = {
         public_id: imageRes.public_id,
         url: imageRes.url,
       };
